@@ -1,0 +1,33 @@
+---
+- name: Device Configuration Tasks
+  hosts: devices
+  gather_facts: no
+  tasks:
+    - name: 1. Configure Banner Message (MOTD)
+      ansible.builtin.copy:
+        content: "PROPERTY OF SECR3253 ASSIGNMENT. AUTHORIZED ACCESS ONLY.\n"
+        dest: /etc/motd
+
+    - name: 2. Ensure User Account Exists
+      ansible.builtin.user:
+        name: netops_admin
+        state: present
+        password: "{{ 'SoloPassword2026' | password_hash('sha512') }}"
+
+    - name: 3. Configure Interface Description
+      ansible.builtin.lineinfile:
+        path: /etc/sysconfig/network-scripts/ifcfg-eth0
+        line: "DESCRIPTION='Primary Automation WAN Link'"
+        create: yes
+
+    - name: 4. Configure Static Route
+      ansible.builtin.shell: "ip route add 10.100.0.0/24 via 172.17.0.1 || true"
+
+    - name: 5. Retrieve Device Information
+      ansible.builtin.setup:
+      register: collected_facts
+
+    - name: 6. Display and Save Device Information
+      ansible.builtin.copy:
+        content: "{{ collected_facts | to_nice_json }}"
+        dest: "./device_info_report.json"
