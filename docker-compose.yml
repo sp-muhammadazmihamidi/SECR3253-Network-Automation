@@ -8,8 +8,13 @@ services:
     working_dir: /workspace
     command: /bin/bash -c "apt-get update && apt-get install -y ansible openssh-client && tail -f /dev/null"
   managed_node:
-    image: radwebhosting/centos7-ssh
+    image: linuxserver/openssh-server:latest
     container_name: managed_node
     ports:
       - "2222:22"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kuala_Lumpur
+      - USER_PASSWORD=root
 
