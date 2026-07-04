@@ -1,0 +1,31 @@
+[H[2J[3J==========================================================
+          AUTOMATED LINUX SYSTEM AUDIT REPORT             
+==========================================================
+1. Hostname:          labvm
+2. Current Date/Time: Sun 05 Jul 2026 02:32:16 AM +08
+----------------------------------------------------------
+3. CPU Information:
+CPU(s):                          2
+Core(s) per socket:              2
+Model name:                      11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+NUMA node0 CPU(s):               0,1
+----------------------------------------------------------
+4. Memory Usage:
+              total        used        free      shared  buff/cache   available
+Mem:          3.8Gi       663Mi       276Mi        53Mi       2.9Gi       2.9Gi
+Swap:         2.0Gi       156Mi       1.8Gi
+----------------------------------------------------------
+5. Disk Usage:
+total            42G   21G   20G  52% -
+----------------------------------------------------------
+6. Logged In Users:
+devasc   tty7         2026-05-23 15:39 (:0)
+----------------------------------------------------------
+7. Top 5 Running Processes by CPU Usage:
+PID	%CPU	COMMAND
+   2067  0.9 /usr/lib/xorg/Xorg -core :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+   1718  0.5 /opt/API-SIMULATOR/venv/bin/python api-simulator.py
+   2496  0.5 /usr/lib/mate-applets/mate-multiload-applet
+ 773206  0.5 mate-terminal
+   2248  0.2 /usr/bin/VBoxClient --draganddrop
+==========================================================
